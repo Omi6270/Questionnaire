@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Leaderboard</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-orange-50 min-h-screen flex flex-col items-center p-6 space-y-8">
+
+    <h1 class="text-3xl font-bold text-orange-700">Global Leaderboard</h1>
+
+    <table class="min-w-full table-auto bg-white rounded-xl shadow-md overflow-hidden">
+        <thead class="bg-orange-300 text-white">
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Best Score</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="entry : ${leaderboard}" 
+			th:style="'background-color: hsl(30, 100%, ' + (${100} - ${entry.userRank} * 5) + '%)'"
+			                class="text-gray-900 hover:bg-orange-100 transition duration-150 ">        
+				<td th:text="${entry.pass} ? ${entry.userRank} : '-'" class="py-2 px-4 text-center">1</td>
+
+                <td th:text="${entry.name}" class="py-2 px-4 text-center">Name</td>
+                <td th:text="${entry.email}" class="py-2 px-4 text-center">Email</td>
+                <td th:text="${entry.score}" class="py-2 px-4 text-center">Score</td>
+                <td th:text="${entry.pass ? 'Passed' : 'Failed'}" class="py-2 px-4 text-center"
+				 th:classappend="${entry.pass} ? 'text-green-700' : 'text-red-700'" >Status</td>
+            </tr>
+        </tbody>
+    </table>
+	<br>
+	<hr/>
+
+	<br>
+	<br>
+	
+		<div>
+	        <a th:href="@{/home}">
+	            <button class="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-md shadow transition duration-200">
+	                Back to Quiz
+	            </button>
+	        </a>
+	    </div>
+
+</body>
+</html>

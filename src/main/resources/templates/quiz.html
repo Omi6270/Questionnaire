@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questionnaire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+		input[type="radio"] {
+		            accent-color: red; 
+		        }
+    </style>
+</head>
+
+<body class="bg-orange-50 py-10 px-4">
+    <h2 class="text-5xl font-bold text-center mb-10 text-orange-700">Questionnaire</h2>
+    
+    <form id="quizForm" action="/submit" method="post" novalidate class="max-w-2xl mx-auto space-y-6">
+
+        <!-- Name & Email Card -->
+		<div class="bg-orange-200 rounded-2xl shadow-md p-6">
+		  <h3 class="text-xl font-semibold mb-4 text-gray-800">Your Information</h3>
+
+		  <label for="name" class="block mb-1 font-medium text-gray-700">
+		    Name <span id="nameAsterisk" class="text-red-500 required-asterisk">*</span>
+		  </label>
+		  <input type="text" id="name" name="name" placeholder="Your Name"
+		         class="w-full px-4 py-2 border rounded-lg mb-2 hover:shadow-md p-1 rounded-md transition-shadow duration-200"
+		         oninput="toggleAsterisk(this, 'nameAsterisk')" />
+		  <div id="nameError" class="error mb-2"></div>
+
+		  <label for="email" class="block mb-1 font-medium text-gray-700">
+		    Email <span id="emailAsterisk" class="text-red-500 required-asterisk">*</span>
+		  </label>
+		  <input type="text" id="email" name="email" placeholder="Your Email"
+		         class="w-full px-4 py-2 border rounded-lg hover:shadow-md p-1 rounded-md transition-shadow duration-200"
+		         oninput="toggleAsterisk(this, 'emailAsterisk')" />
+		  <div id="emailError" class="error"></div>
+		</div>
+
+
+        <!-- Questions -->
+        <!-- Question Template -->
+        <div class="bg-orange-100 rounded-2xl shadow-md p-6">
+            <p class="font-medium mb-2">1. What is Java? <span id="q1Asterisk" class="text-red-500 required-asterisk">*</span></p>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[1]" value="A Programming Language" onchange="toggleAsteriskRadio('q1Asterisk', 'answers[1]')" /> A Programming Language</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[1]" value="A Fruit" onchange="toggleAsteriskRadio('q1Asterisk', 'answers[1]')" /> A Fruit</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[1]" value="A Company" onchange="toggleAsteriskradio('q1Asterisk', 'answers[1]')" /> A Company</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[1]" value="A Database" onchange="toggleAsteriskRadio('q1Asterisk', 'answers[1]')"/> A Database</label>
+            <div id="q1Error" class="error mt-1"></div>
+        </div>
+
+        <div class="bg-orange-100 rounded-2xl shadow-md p-6">
+            <p class="font-medium mb-2">2. What is Apple? <span id="q2Asterisk" class="text-red-500 required-asterisk">*</span></p>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[2]" value="A Fruit" onchange="toggleAsteriskRadio('q2Asterisk', 'answers[2]')" /> A Fruit</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[2]" value="A Game" onchange="toggleAsteriskRadio('q2Asterisk', 'answers[2]')" /> A Game</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[2]" value="A Programming Language"onchange="toggleAsteriskRadio('q2Asterisk', 'answers[2]')" /> A Programming Language</label>
+            <div id="q2Error" class="error mt-1"></div>
+        </div>
+
+        <div class="bg-orange-100 rounded-2xl shadow-md p-6">
+            <p class="font-medium mb-2">3. Which of the following is not a pillar of OOP? <span id="q3Asterisk" class="text-red-500 required-asterisk" >*</span></p>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[3]" value="Abstraction" onchange="toggleAsteriskRadio('q3Asterisk', 'answers[3]')"  /> Abstraction</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[3]" value="Encapsulation" onchange="toggleAsteriskRadio('q3Asterisk', 'answers[3]')" /> Encapsulation</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[3]" value="Recursion" onchange="toggleAsteriskRadio('q3Asterisk', 'answers[3]')"/> Recursion</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[3]" value="Polymorphism" onchange="toggleAsteriskRadio('q3Asterisk', 'answers[3]')"/> Polymorphism</label>
+            <div id="q3Error" class="error mt-1"></div>
+        </div>
+
+        <div class="bg-orange-100 rounded-2xl shadow-md p-6">
+            <p class="font-medium mb-2">4. Which best describes polymorphism? <span id="q4Asterisk" class="text-red-500 required-asterisk">*</span></p>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[4]" value="Same function name, different implementations" onchange="toggleAsteriskRadio('q4Asterisk', 'answers[4]')"/> Same function name, different implementations</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[4]" value="Hiding data" onchange="toggleAsteriskRadio('q4Asterisk', 'answers[4]')"/> Hiding data</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[4]" value="Code reusability" onchange="toggleAsteriskRadio('q4Asterisk', 'answers[4]')"/> Code reusability</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[4]" value="None of the above" onchange="toggleAsteriskRadio('q4Asterisk', 'answers[4]')"/> None of the above</label>
+            <div id="q4Error" class="error mt-1"></div>
+        </div>
+
+        <div class="bg-orange-100 rounded-2xl shadow-md p-6">
+            <p class="font-medium mb-2">5. Explain encapsulation. <span id="q5Asterisk" class="text-red-500 required-asterisk">*</span></p>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[5]" value="Variables" onchange="toggleAsteriskRadio('q5Asterisk', 'answers[5]')"/> Variables</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[5]" value="Getter and Setter" onchange="toggleAsteriskRadio('q5Asterisk', 'answers[5]')"/> Getter and Setter</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[5]" value="Inheritance" onchange="toggleAsteriskRadio('q5Asterisk', 'answers[5]')" /> Inheritance</label>
+            <div id="q5Error" class="error mt-1"></div>
+        </div>
+
+        <div class="bg-orange-100 rounded-2xl shadow-md p-6">
+            <p class="font-medium mb-2">6. What is the difference between class and object? <span id="q6Asterisk" class="text-red-500 required-asterisk">*</span></p>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[6]" value="Class is a blueprint and Object is an instance" onchange="toggleAsteriskRadio('q6Asterisk', 'answers[6]')"/> Class is a blueprint and Object is an instance</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[6]" value="Not know" onchange="toggleAsteriskRadio('q6Asterisk', 'answers[6]')"/> Not know</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[6]" value="Object defines methods" onchange="toggleAsteriskRadio('q6Asterisk', 'answers[6]')"/> Object defines methods</label>
+            <div id="q6Error" class="error mt-1"></div>
+        </div>
+
+        <div class="bg-orange-100 rounded-2xl shadow-md p-6">
+            <p class="font-medium mb-2">7. Which keyword is used to inherit a class in Java? <span id="q7Asterisk" class="text-red-500 required-asterisk">*</span></p>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[7]" value="this" onchange="toggleAsteriskRadio('q7Asterisk', 'answers[7]')" /> this</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[7]" value="super" onchange="toggleAsteriskRadio('q7Asterisk', 'answers[7]')" /> super</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[7]" value="Extends" onchange="toggleAsteriskRadio('q7Asterisk', 'answers[7]')" /> extends</label>
+            <label class="block hover:shadow-md p-1 rounded-md transition-shadow duration-200 hover:bg-orange-200"><input type="radio" name="answers[7]" value="implements" onchange="toggleAsteriskRadio('q7Asterisk', 'answers[7]')" /> implements</label>
+            <div id="q7Error" class="error mt-1"></div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex justify-center gap-4">
+            <button type="submit" class="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition">Submit</button>
+            <button type="button" onclick="clearForm()"
+                    class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition">
+                Clear Form
+            </button>
+        </div>
+    </form>
+
+    <!-- Validation Script -->
+    <script>
+        window.onload = function () {
+			  
+            const form = document.getElementById("quizForm");
+
+            document.getElementById("name").addEventListener("input", function () {
+                const name = this.value.trim();
+                document.getElementById("nameError").textContent = name === "" ? "Name is required" : "";
+            });
+
+            document.getElementById("email").addEventListener("input", function () {
+                const email = this.value.trim();
+                const emailError = document.getElementById("emailError");
+                if (email === "") {
+                    emailError.textContent = "Email is required";
+                } else if (!email.match(/^\S+@\S+\.\S+$/)) {
+                    emailError.textContent = "Enter a valid email address";
+                } else {
+                    emailError.textContent = "";
+                }
+            });
+
+            for (let i = 1; i <= 7; i++) {
+                const radios = document.querySelectorAll(`input[name="answers[${i}]"]`);
+                radios.forEach(radio => {
+                    radio.addEventListener("change", function () {
+                        document.getElementById(`q${i}Error`).textContent = "";
+                    });
+                });
+            }
+
+            form.onsubmit = function (event) {
+                let isValid = true;
+                const errorFields = document.querySelectorAll(".error");
+                errorFields.forEach(field => field.textContent = "");
+
+                const name = document.getElementById("name").value.trim();
+                if (name === "") {
+                    document.getElementById("nameError").textContent = "Name is required";
+                    isValid = false;
+                }
+
+                const email = document.getElementById("email").value.trim();
+                if (email === "") {
+                    document.getElementById("emailError").textContent = "Email is required";
+                    isValid = false;
+                } else if (!email.match(/^\S+@\S+\.\S+$/)) {
+                    document.getElementById("emailError").textContent = "Enter a valid email address";
+                    isValid = false;
+                }
+
+                for (let i = 1; i <= 7; i++) {
+                    const radios = document.querySelectorAll(`input[name="answers[${i}]"]`);
+                    const selected = Array.from(radios).some(rb => rb.checked);
+                    if (!selected) {
+                        document.getElementById(`q${i}Error`).textContent = `Question ${i} is required`;
+                        isValid = false;
+                    }
+                }
+
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            };
+        };
+    </script>
+	<script>
+		
+	  function toggleAsterisk(inputEl, asteriskId) {
+	    const asterisk = document.getElementById(asteriskId);
+	    if (inputEl.value.trim() !== "") {
+	      asterisk.classList.add("hidden");
+	    } else {
+	      asterisk.classList.remove("hidden");
+	    }
+	  }
+	  
+	  function toggleAsteriskRadio(asteriskId, inputName) {
+	      const asterisk = document.getElementById(asteriskId);
+	      const radios = document.getElementsByName(inputName);
+	      const anyChecked = Array.from(radios).some(radio => radio.checked);
+
+	      if (anyChecked) {
+	        asterisk.classList.add("hidden");
+	      } else {
+	        asterisk.classList.remove("hidden");
+	      }
+	    }
+		
+		function clearForm() {
+		   document.getElementById('quizForm').reset();
+		   // Show all asterisks again
+		   document.querySelectorAll('.required-asterisk').forEach(el => {
+		     el.classList.remove('hidden');
+		   });
+		 }
+		
+	</script>
+
+</body>
+</html>
+
